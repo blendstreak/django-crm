@@ -1,0 +1,28 @@
+{% extends 'base.html' %}{% block content%}
+
+<h1>Register</h1>
+<br/>
+
+<center>
+<form class="max-w-sm rounded overflow-hidden shadow-lg p-5" method="post" action="">
+    {% csrf_token %}
+    {% if form.errors %}
+        <div>
+            Your Form Has errors
+            {% for field in form %}
+                {% if field.errors %}
+                    {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    {{ form.as_p }}
+
+    <button type="submit">
+        Register
+    </button>
+
+</form>
+</center>
+
+{% endblock %}

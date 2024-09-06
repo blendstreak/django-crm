@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.navbar{
+    display: flex;
+    justify-content: center;
+
+}
+
+.nav-items{
+    display: flex;
+
+}
+
+tr:nth-child(even){
+    background-color: rgb(161, 158, 158);
+}

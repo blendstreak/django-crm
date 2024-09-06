@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+    <h1> Records... </h1>
+    <table class="table-fixed">
+        <thead>
+            <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zipcode</th>
+            <th>ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if records %}
+            {% for record in records %}
+            <tr>
+                    <td>{{ record.first_name }} {{ record.last_name }}</td>
+                    <td>{{ record.email }}</td>
+                    <td>{{ record.phone }}</td>
+                    <td>{{ record.address }}</td>
+                    <td>{{ record.city }}</td>
+                    <td>{{ record.state }}</td>
+                    <td>{{ record.zipcode }}</td>
+                    <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
+            </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+    
+{% else %}
+<center>
+    <form method="post" action="{% url 'home' %}">
+    {% csrf_token %}
+    <h1>Login</h1>
+    <div class="">
+        <input type="text" name="username" placeholder="username" required/>
+        <input type="password" name="password" placeholder="password" required/>
+        <button type="submit">Login</button>
+    </div>
+</form>
+
+</center>
+
+{% endif %}
+{% endblock %}

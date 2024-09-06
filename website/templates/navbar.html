@@ -1,0 +1,16 @@
+<header class="navbar">
+    <div>
+
+    </div>
+    <div class="nav-items bg-slate-900 font-semibold text-white gap-9">
+        {% if user.is_authenticated %}
+        <ul><li><a href="{% url 'add_record' %}">Add Record</a></li></ul>
+            <ul><li><a href="{% url 'logout' %}">Logout</a></li></ul>
+        {% else %}
+            <ul><li><a href="{% url 'register' %}">Register</a></li></ul>
+            <ul><li><a href="{% url 'home' %}">Login</a></li></ul>        
+        {% endif %}
+        
+        <!-- <ul><li><a href="">Login</a></li></ul> -->
+    </div>
+</header>
