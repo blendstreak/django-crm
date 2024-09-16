@@ -4,32 +4,32 @@
 
 {% if user.is_authenticated %}
 
-    <h1> Records... </h1>
-    <table class="table-fixed">
-        <thead>
+    <p class="text-semibold"> Records... </p>
+    <table class="w-full text-sm text-left rtl:text-right">
+        <thead class="text-xs uppercase bg-gray-50 dark:bg-gray-700 text-white">
             <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Zipcode</th>
-            <th>ID</th>
+            <th class="px-6 py-3">Name</th>
+            <th class="px-6 py-3">Email</th>
+            <th class="px-6 py-3">Phone</th>
+            <th class="px-6 py-3">Address</th>
+            <th class="px-6 py-3">City</th>
+            <th class="px-6 py-3">State</th>
+            <th class="px-6 py-3">Zipcode</th>
+            <th class="px-6 py-3">ID</th>
             </tr>
         </thead>
         <tbody>
             {% if records %}
             {% for record in records %}
-            <tr>
-                    <td>{{ record.first_name }} {{ record.last_name }}</td>
-                    <td>{{ record.email }}</td>
-                    <td>{{ record.phone }}</td>
-                    <td>{{ record.address }}</td>
-                    <td>{{ record.city }}</td>
-                    <td>{{ record.state }}</td>
-                    <td>{{ record.zipcode }}</td>
-                    <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
+            <tr class="odd:bg-white even:bg-gray-400 border-b dark:border-gray-700">
+                    <td class="px-6 py-4">{{ record.first_name }} {{ record.last_name }}</td>
+                    <td class="px-6 py-4">{{ record.email }}</td>
+                    <td class="px-6 py-4">{{ record.phone }}</td>
+                    <td class="px-6 py-4">{{ record.address }}</td>
+                    <td class="px-6 py-4">{{ record.city }}</td>
+                    <td class="px-6 py-4">{{ record.state }}</td>
+                    <td class="px-6 py-4">{{ record.zipcode }}</td>
+                    <td class="px-6 py-4"><a class="underline font-semibold text-blue-700" href="{% url 'record' record.id %}">{{ record.id }}</a></td>
             </tr>
                 {% endfor %}
             {% endif %}
@@ -37,16 +37,22 @@
     </table>
     
 {% else %}
+
+
 <center>
-    <form method="post" action="{% url 'home' %}">
+    <div class=""></div>
+    <form class="shadow-lg border-solid rounded-md p-20 fixed md:top-1/4 md:left-1/4 top-1/4 left-[6%] md:p-36 xl:left-50%" method="post" action="{% url 'home' %}">
     {% csrf_token %}
-    <h1>Login</h1>
-    <div class="">
-        <input type="text" name="username" placeholder="username" required/>
-        <input type="password" name="password" placeholder="password" required/>
-        <button type="submit">Login</button>
-    </div>
-</form>
+        <div class="">
+            <p class="font-semibold">LOGIN</p><br/>
+            <div class="flex flex-col gap-4">
+                <input class="p-2 focus:outline-none border-solid border-2 border-[#03346E] rounded-md" type="text" name="username" placeholder="Username" required/>
+                <input class="p-2 focus:outline-none border-solid border-2 border-[#03346E] rounded-md" type="password" name="password" placeholder="Password" required/>
+                <button class="bg-[#021526] px-5 py-2 text-white rounded-full font-semibold hover:bg-gray-300" type="submit">Login</button>
+                <p>or create one <span><a class="text-blue-400 underline hover:cursor-pointer" href="{% url 'register' %}">here</a></span></p>
+            </div>
+        </div>
+    </form>
 
 </center>
 

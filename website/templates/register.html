@@ -1,24 +1,29 @@
 {% extends 'base.html' %}{% block content%}
 
-<h1>Register</h1>
-<br/>
 
 <center>
-<form class="max-w-sm rounded overflow-hidden shadow-lg p-5" method="post" action="">
+    <div class=""></div>
+    <form class="shadow-lg border-solid rounded-md p-20 md:top-[10%] md:left-[10%] top-1/4 left-[6%] md:p-36 xl:left-50%0" method="post" action="">
+    <p class="font-semibold">Register</p><br/>
     {% csrf_token %}
     {% if form.errors %}
-        <div>
+        <div class="bg-red-300 rounded-md">
             Your Form Has errors
             {% for field in form %}
                 {% if field.errors %}
-                    {{ field.errors }}
+                <ul class="flex flex-initial">
+                   <li class="list-disc">{{ field.errors }}</li>
+                </ul>
                 {% endif %}
             {% endfor %}
         </div>
     {% endif %}
+    
+    <div class="flex flex-col">
     {{ form.as_p }}
-
-    <button type="submit">
+    </div>
+    <br/>
+    <button class="bg-[#021526] px-[24px] py-[10px] text-white rounded-full font-semibold hover:bg-gray-300" type="submit">
         Register
     </button>
 

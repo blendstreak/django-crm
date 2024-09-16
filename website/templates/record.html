@@ -1,10 +1,10 @@
 {% extends 'base.html' %}{% block content %}
 
-<h1>
+<p class="font-extrabold">
     Customer Record:
-</h1>
+</p>
 <br/>
-<div>
+<div class="mx-3 font-semibold">
     {{ customer_record.first_name }} {{ customer_record.last_name }}
     <div>
     <p>
@@ -30,7 +30,8 @@
     </p>
     </div>
 </div>
-<a href="{% url 'home' %}">Back</a>
-<a href="{% url 'delete_record' customer_record.id %}">Delete</a>
-<a href="{% url 'update_record' customer_record.id %}">Update Record</a>
+<br/>
+<a class="bg-gray-400 hover:bg-gray-300 px-4 py-2 rounded-md text-white" href="{% url 'home' %}">Back</a>
+<a class="bg-red-400 hover:bg-red-300 px-4 py-2 rounded-md text-white" href="{% url 'delete_record' customer_record.id %}">Delete</a>
+<a class="bg-blue-400 hover:bg-blue-300 px-4 py-2 rounded-md text-white" href="{% url 'update_record' customer_record.id %}">Update Record</a>
 {% endblock %}

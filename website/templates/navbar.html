@@ -1,16 +1,23 @@
-<header class="navbar">
-    <div>
-
-    </div>
-    <div class="nav-items bg-slate-900 font-semibold text-white gap-9">
-        {% if user.is_authenticated %}
-        <ul><li><a href="{% url 'add_record' %}">Add Record</a></li></ul>
-            <ul><li><a href="{% url 'logout' %}">Logout</a></li></ul>
-        {% else %}
-            <ul><li><a href="{% url 'register' %}">Register</a></li></ul>
-            <ul><li><a href="{% url 'home' %}">Login</a></li></ul>        
-        {% endif %}
-        
-        <!-- <ul><li><a href="">Login</a></li></ul> -->
-    </div>
+<header class="bg-[#17153B] p-4 text-white">
+    <nav class="flex justify-between items-center">
+        <div class="">
+            <ul class="flex items-center gap-4">
+            {% if user.is_authenticated %}
+                <li>
+                    <a class="hover:text-gray-500" href="{% url 'add_record' %}">Add Record</a>
+                </li>
+                <li>
+                    <a class="hover:text-gray-500" href="{% url 'logout' %}">Logout</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% url 'register' %}">Register</a>
+                </li>
+                <li>
+                    <a class="" href="{% url 'home' %}">Login</a>
+                </li>       
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
 </header>
