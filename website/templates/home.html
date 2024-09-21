@@ -5,23 +5,24 @@
 {% if user.is_authenticated %}
 
     <p class="text-semibold"> Records... </p>
-    <table class="w-full text-sm text-left rtl:text-right">
-        <thead class="text-xs uppercase bg-gray-50 dark:bg-gray-700 text-white">
-            <tr>
-            <th class="px-6 py-3">Name</th>
-            <th class="px-6 py-3">Email</th>
-            <th class="px-6 py-3">Phone</th>
-            <th class="px-6 py-3">Address</th>
-            <th class="px-6 py-3">City</th>
-            <th class="px-6 py-3">State</th>
-            <th class="px-6 py-3">Zipcode</th>
-            <th class="px-6 py-3">ID</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% if records %}
-            {% for record in records %}
-            <tr class="odd:bg-white even:bg-gray-400 border-b dark:border-gray-700">
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left rtl:text-right table-auto">
+            <thead class="text-xs uppercase bg-gray-50 dark:bg-gray-700 text-white">
+                <tr>
+                    <th class="px-6 py-3">Name</th>
+                    <th class="px-6 py-3">Email</th>
+                    <th class="px-6 py-3">Phone</th>
+                    <th class="px-6 py-3">Address</th>
+                    <th class="px-6 py-3">City</th>
+                    <th class="px-6 py-3">State</th>
+                    <th class="px-6 py-3">Zipcode</th>
+                    <th class="px-6 py-3">ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if records %}
+                {% for record in records %}
+                <tr class="odd:bg-white even:bg-gray-400 border-b dark:border-gray-700">
                     <td class="px-6 py-4">{{ record.first_name }} {{ record.last_name }}</td>
                     <td class="px-6 py-4">{{ record.email }}</td>
                     <td class="px-6 py-4">{{ record.phone }}</td>
@@ -30,11 +31,12 @@
                     <td class="px-6 py-4">{{ record.state }}</td>
                     <td class="px-6 py-4">{{ record.zipcode }}</td>
                     <td class="px-6 py-4"><a class="underline font-semibold text-blue-700" href="{% url 'record' record.id %}">{{ record.id }}</a></td>
-            </tr>
+                </tr>
                 {% endfor %}
-            {% endif %}
-        </tbody>
-    </table>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
     
 {% else %}
 
